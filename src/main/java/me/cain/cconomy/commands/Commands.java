@@ -36,7 +36,7 @@ public class Commands implements CommandExecutor
 						int balance = cConomy.plugin.getConfig().getInt("players." + s.getName() + ".balance");
 						int player = cConomy.plugin.getConfig().getInt("players." + target.getName() + ".balance");
 						int input = Integer.parseInt(args[1]);
-						if(input < balance) {
+						if(input <= balance) {
 							String sPlayer = cConomy.plugin.getConfig().getString("players." + target.getName() + ".balance");
 							String dPlayer = cConomy.plugin.getConfig().getString("players." + s.getName() + ".balance");
 							int final1 = player + input;
