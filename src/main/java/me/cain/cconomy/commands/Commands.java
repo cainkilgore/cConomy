@@ -37,12 +37,15 @@ public class Commands implements CommandExecutor
 						int player = cConomy.plugin.getConfig().getInt("players." + target.getName() + ".balance");
 						int input = Integer.parseInt(args[1]);
 						if(input <= balance) {
-							String sPlayer = cConomy.plugin.getConfig().getString("players." + target.getName() + ".balance");
-							String dPlayer = cConomy.plugin.getConfig().getString("players." + s.getName() + ".balance");
+							int sPlayer = cConomy.plugin.getConfig().getInt("players." + target.getName() + ".balance");
+							int dPlayer = cConomy.plugin.getConfig().getInt("players." + s.getName() + ".balance");
 							int final1 = player + input;
 							int final2 = balance - input;
-							cConomy.plugin.getConfig().set(sPlayer, final1);
-							cConomy.plugin.getConfig().set(dPlayer, final2);
+							ChatUtility.Console("To Player: " + sPlayer);
+							ChatUtility.Console("From Player: " + dPlayer);
+							cConomy.plugin.getConfig().set(sPlayer, final1); // Errors!
+							cConomy.plugin.getConfig().set(dPlayer, final2); // Errors!
+							//ChatUtility.Message((Player) s, "Your old balance: " + dPlayer);
 							ChatUtility.Message(target, "You have been given " + input + " by " + s.getName());
 							ChatUtility.Message((Player) s, "You have given " + target.getName() + " " + input);
 							cConomy.plugin.saveConfig();
