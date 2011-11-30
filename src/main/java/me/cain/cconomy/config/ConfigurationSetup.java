@@ -4,11 +4,13 @@ import main.java.me.cain.cconomy.cConomy;
 
 public class ConfigurationSetup
 {
+	static cConomy plugin;
+	
 	public static void load()
 	{
-		if(cConomy.plugin.getConfig().get("settings.starteramount") == null) {
-			cConomy.plugin.getConfig().set("settings.starteramount", 10);
+		if(plugin.getConfig().get("settings.starteramount") == null) {
+			plugin.getConfig().set("settings.starteramount", 10);
 		}
-		cConomy.plugin.saveConfig();
+		plugin.saveConfig();
 	}
 }
