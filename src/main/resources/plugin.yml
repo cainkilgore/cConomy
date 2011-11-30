@@ -7,3 +7,5 @@ commands:
        description: 'Money commands'
    pay:
        description: 'Pay a user'
+   startermoney:
+       description: 'Set the default starter money'

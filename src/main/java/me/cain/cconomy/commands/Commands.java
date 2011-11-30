@@ -26,8 +26,8 @@ public class Commands implements CommandExecutor
 				}
 			}
 		}
-		if(s instanceof Player) {
-			if(c.getName().equalsIgnoreCase("pay")) {
+		if(c.getName().equalsIgnoreCase("pay")) {
+			if(s instanceof Player) {
 				if(args.length < 2) {
 						ChatUtility.Message((Player) s, "/pay [player] [amount]");
 					} else {
@@ -59,9 +59,28 @@ public class Commands implements CommandExecutor
 						ChatUtility.Denied((Player) s, "This player is not online.");
 					}
 				}
+			} else {
+				ChatUtility.Console("You can only use these commands in-game!");
 			}
-		} else {
-			ChatUtility.Console("You can only use these commands in-game!");
+		}
+	
+		
+		if(c.getName().equalsIgnoreCase("startermoney")) {
+			if(args.length < 1) {
+				if(s instanceof Player) {
+					ChatUtility.Message((Player) s, "/startermoney [amount]");
+				} else {
+					ChatUtility.Console("/startermoney [amount]");
+				}
+			} else {
+				cConomy.plugin.getConfig().set("settings.starteramount", Integer.parseInt(args[0]));
+				if(s instanceof Player) {
+					ChatUtility.Message((Player) s, "New Starter Money Set!");
+				} else {
+					ChatUtility.Console("New Starter Money Set!");
+				}
+				cConomy.plugin.saveConfig();
+			}
 		}
 		return false;
 	}

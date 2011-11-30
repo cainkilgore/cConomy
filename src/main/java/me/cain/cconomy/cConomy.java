@@ -25,6 +25,7 @@ public class cConomy extends JavaPlugin
 		pm.registerEvent(Type.PLAYER_LOGIN, new playerListener(), Priority.Normal, this);
 		getServer().getPluginCommand("money").setExecutor(new Commands());
 		getServer().getPluginCommand("pay").setExecutor(new Commands());
+		getServer().getPluginCommand("startermoney").setExecutor(new Commands());
 		ChatUtility.Console("cConomy has been enabled successfully!");
 	}
 	
