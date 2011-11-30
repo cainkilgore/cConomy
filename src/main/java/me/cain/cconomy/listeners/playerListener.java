@@ -14,7 +14,7 @@ public class playerListener extends PlayerListener
 		String PLAYERNAME = e.getPlayer().getName();
 		int amount = cConomy.plugin.getConfig().getInt("settings.starteramount");
 		
-		if(!cConomy.plugin.getConfig().getBoolean("players." + PLAYERNAME)) {
+		if(cConomy.plugin.getConfig().get("players." + PLAYERNAME) == null) {
 			cConomy.plugin.getConfig().set("players." + PLAYERNAME, true);
 			cConomy.plugin.getConfig().set("players." + PLAYERNAME + ".balance", amount);
 			cConomy.plugin.saveConfig();

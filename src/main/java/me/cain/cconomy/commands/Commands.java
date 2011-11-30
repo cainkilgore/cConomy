@@ -37,17 +37,20 @@ public class Commands implements CommandExecutor
 						int player = cConomy.plugin.getConfig().getInt("players." + target.getName() + ".balance");
 						int input = Integer.parseInt(args[1]);
 						if(input <= balance) {
-							int sPlayer = cConomy.plugin.getConfig().getInt("players." + target.getName() + ".balance");
-							int dPlayer = cConomy.plugin.getConfig().getInt("players." + s.getName() + ".balance");
+							String sPlayer = "players." + target.getName() + ".balance";
+							String dPlayer = "players." + s.getName() + ".balance";
 							int final1 = player + input;
 							int final2 = balance - input;
 							ChatUtility.Console("To Player: " + sPlayer);
 							ChatUtility.Console("From Player: " + dPlayer);
-							cConomy.plugin.getConfig().set(sPlayer, final1); // Errors!
-							cConomy.plugin.getConfig().set(dPlayer, final2); // Errors!
-							//ChatUtility.Message((Player) s, "Your old balance: " + dPlayer);
+							// Target Player
+							cConomy.plugin.getConfig().set(sPlayer, final1);
 							ChatUtility.Message(target, "You have been given " + input + " by " + s.getName());
+							ChatUtility.Message(target, "New Balance: " + final1);
+							// From Player
+							cConomy.plugin.getConfig().set(dPlayer, final2);
 							ChatUtility.Message((Player) s, "You have given " + target.getName() + " " + input);
+							ChatUtility.Message((Player) s, "New Balance: " + final2);
 							cConomy.plugin.saveConfig();
 						} else {
 							ChatUtility.Denied((Player) s, "You do not have enough funds!");
