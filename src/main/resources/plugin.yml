@@ -1,0 +1,9 @@
+name: cConomy
+version: 1.00
+author: CainFool
+main: main.java.me.cain.cconomy.cConomy
+commands:
+   money:
+       description: 'Money commands'
+   pay:
+       description: 'Pay a user'
