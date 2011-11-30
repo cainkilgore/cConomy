@@ -12,8 +12,6 @@ import org.bukkit.entity.Player;
 
 public class Commands implements CommandExecutor
 {
-	static cConomy plugin;
-	
 	public boolean onCommand(CommandSender s, Command c, String l, String [] args)
 	{
 		if(c.getName().equalsIgnoreCase("money")) {
@@ -29,7 +27,7 @@ public class Commands implements CommandExecutor
 		if(c.getName().equalsIgnoreCase("pay")) {
 			if(s instanceof Player) {
 				if(args.length < 2) {
-						ChatUtility.Message((Player) s, "/pay [player] [amount]");
+						ChatUtility.Denied((Player) s, "/pay [player] [amount]");
 					} else {
 						Player target = Bukkit.getServer().getPlayer(args[0]);
 						if(target != null) {
@@ -51,6 +49,7 @@ public class Commands implements CommandExecutor
 							cConomy.plugin.getConfig().set(dPlayer, final2);
 							ChatUtility.Message((Player) s, "You have given " + target.getName() + " " + input);
 							ChatUtility.Message((Player) s, "New Balance: " + final2);
+							// Save.
 							cConomy.plugin.saveConfig();
 						} else {
 							ChatUtility.Denied((Player) s, "You do not have enough funds!");
@@ -73,11 +72,13 @@ public class Commands implements CommandExecutor
 					ChatUtility.Console("/startermoney [amount]");
 				}
 			} else {
-				cConomy.plugin.getConfig().set("settings.starteramount", Integer.parseInt(args[0]));
+				if(s.isOp()) {
+					cConomy.plugin.getConfig().set("settings.starteramount", Integer.parseInt(args[0]));
+				}
 				if(s instanceof Player) {
-					ChatUtility.Message((Player) s, "New Starter Money Set!");
+					ChatUtility.Message((Player) s, "New Starter Money Set! ( " + args[0] + " )");
 				} else {
-					ChatUtility.Console("New Starter Money Set!");
+					ChatUtility.Console("New Starter Money Set! ( " + args[0] + " )");
 				}
 				cConomy.plugin.saveConfig();
 			}
