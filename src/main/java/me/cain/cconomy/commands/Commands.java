@@ -80,7 +80,7 @@ public class Commands implements CommandExecutor
 					ChatUtility.Console("/startermoney [amount]");
 				}
 			} else {
-				if(s.isOp()) {
+				if(s.hasPermission("cconomy.startermoney")) {
 					plugin.getConfig().set("settings.starteramount", Integer.parseInt(args[0]));
 				}
 				if(s instanceof Player) {
@@ -101,7 +101,7 @@ public class Commands implements CommandExecutor
 				}
 			} else {
 				if(s instanceof Player) {
-				if(s.isOp()) {
+				if(s.hasPermission("cconomy.createaccount")) {
 						plugin.getConfig().set("players." + args[0], true);
 						plugin.getConfig().set("players." + args[0] + ".balance", args[1]);
 						ChatUtility.Message((Player) s, "Account created!");
@@ -115,7 +115,7 @@ public class Commands implements CommandExecutor
 				}
 			}
 		
-		if(c.getName().equalsIgnoreCase("removeaccount"))
+		/*if(c.getName().equalsIgnoreCase("removeaccount"))
 		{
 			if(args.length < 1) {
 				if(s instanceof Player) {
@@ -123,6 +123,8 @@ public class Commands implements CommandExecutor
 				}
 			}
 		}
+		Commented out for now, forgot I left this in :$
+		*/
 		return false;
 	}
 
