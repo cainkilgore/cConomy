@@ -13,6 +13,12 @@ import org.bukkit.entity.Player;
 public class Commands implements CommandExecutor
 {
 	cConomy plugin;
+	
+	public Commands(cConomy plugin)
+	{
+		this.plugin = plugin;
+	}
+	
 
 	public boolean onCommand(CommandSender s, Command c, String l, String [] args)
 	{
@@ -85,6 +91,29 @@ public class Commands implements CommandExecutor
 				plugin.saveConfig();
 			}
 		}
+		
+		if(c.getName().equalsIgnoreCase("createaccount")) {
+			if(args.length < 2) {
+				if(s instanceof Player) {
+					ChatUtility.Message((Player) s, "/createaccount [name] [amount of money]");
+				} else {
+					ChatUtility.Console("/createaccount [name] [amount of money]");
+				}
+			} else {
+				if(s instanceof Player) {
+				if(s.isOp()) {
+						plugin.getConfig().set("players." + args[0], true);
+						plugin.getConfig().set("players." + args[0] + ".balance", args[1]);
+						ChatUtility.Message((Player) s, "Account created!");
+						}
+					} else { 
+						plugin.getConfig().set("players." + args[0], true);
+						plugin.getConfig().set("players." + args[0] + ".balance", args[1]);
+						ChatUtility.Message((Player) s, "Account created!");
+					}
+				plugin.saveConfig();
+				}
+			}
 		return false;
 	}
 

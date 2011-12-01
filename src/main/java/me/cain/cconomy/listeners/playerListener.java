@@ -9,6 +9,11 @@ public class playerListener extends PlayerListener
 {
 	cConomy plugin;
 	
+	public playerListener(cConomy plugin)
+	{
+		this.plugin = plugin;
+	}
+	
 	public void onPlayerLogin(PlayerLoginEvent e)
 	{
 		String PLAYERNAME = e.getPlayer().getName();

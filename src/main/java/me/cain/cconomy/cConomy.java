@@ -16,21 +16,18 @@ public class cConomy extends JavaPlugin
 {
 	public static Configuration config;
 	PluginManager pm = Bukkit.getServer().getPluginManager();
-	public cConomy plugin;
+	public static cConomy plugin;
 	
 	public void onEnable()
 	{
 		ConfigurationSetup.load();
-		pm.registerEvent(Type.PLAYER_LOGIN, new playerListener(), Priority.Normal, this);
-		getServer().getPluginCommand("money").setExecutor(new Commands());
-		getServer().getPluginCommand("pay").setExecutor(new Commands());
-		getServer().getPluginCommand("startermoney").setExecutor(new Commands());
+		pm.registerEvent(Type.PLAYER_LOGIN, new playerListener(plugin), Priority.Normal, this);
+		getServer().getPluginCommand("money").setExecutor(new Commands(plugin));
+		getServer().getPluginCommand("pay").setExecutor(new Commands(plugin));
+		getServer().getPluginCommand("startermoney").setExecutor(new Commands(plugin));
+		getServer().getPluginCommand("createaccount").setExecutor(new Commands(plugin));
 		ChatUtility.Console("cConomy has been enabled successfully!");
-	}
-	
-	public cConomy(cConomy plugin)
-	{
-		this.plugin = plugin;
+		plugin = this;
 	}
 	
 	public void onDisable()

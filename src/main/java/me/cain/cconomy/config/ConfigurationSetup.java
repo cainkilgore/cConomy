@@ -6,6 +6,11 @@ public class ConfigurationSetup
 {
 	static cConomy plugin;
 	
+	public ConfigurationSetup(cConomy plugin)
+	{
+		cConomy.plugin = plugin;
+	}
+	
 	public static void load()
 	{
 		if(plugin.getConfig().get("settings.starteramount") == null) {
