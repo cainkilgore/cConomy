@@ -114,6 +114,15 @@ public class Commands implements CommandExecutor
 				plugin.saveConfig();
 				}
 			}
+		
+		if(c.getName().equalsIgnoreCase("removeaccount"))
+		{
+			if(args.length < 1) {
+				if(s instanceof Player) {
+					
+				}
+			}
+		}
 		return false;
 	}
 
