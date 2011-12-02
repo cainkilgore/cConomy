@@ -11,3 +11,5 @@ commands:
        description: 'Set the default starter money'
    createaccount:
        description: 'Create an account'
+   removeaccount:
+       description: 'Remove an account'

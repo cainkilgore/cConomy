@@ -26,6 +26,7 @@ public class cConomy extends JavaPlugin
 		getServer().getPluginCommand("pay").setExecutor(new Commands(plugin));
 		getServer().getPluginCommand("startermoney").setExecutor(new Commands(plugin));
 		getServer().getPluginCommand("createaccount").setExecutor(new Commands(plugin));
+		getServer().getPluginCommand("removeaccount").setExecutor(new Commands(plugin));
 		ChatUtility.Console("cConomy has been enabled successfully!");
 		plugin = this;
 	}

@@ -115,16 +115,24 @@ public class Commands implements CommandExecutor
 				}
 			}
 		
-		/*if(c.getName().equalsIgnoreCase("removeaccount"))
+		if(c.getName().equalsIgnoreCase("removeaccount"))
 		{
 			if(args.length < 1) {
+				s.sendMessage("/removeaccount [account]");
+			} else {
 				if(s instanceof Player) {
-					
+					if(s.hasPermission("cconomy.removeaccount")) {
+				plugin.getConfig().set("players." + args[0], null);
+				ChatUtility.Message(s, "Account removed!");
+				plugin.saveConfig();
+					} else {
+						plugin.getConfig().set("players." + args[0], null);
+						ChatUtility.Message(s, "Account Removed!");
+						plugin.saveConfig();
+					}
 				}
 			}
 		}
-		Commented out for now, forgot I left this in :$
-		*/
 		return false;
 	}
 
